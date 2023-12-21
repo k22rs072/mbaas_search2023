@@ -43,28 +43,35 @@
         
         function dataIN() {
 
+            let TestDataClass = ncmb.DataStore(db);
             TestDataClass.count().fetchAll() 
                 .then(function(results){
-                  console.log(results.count); })
-                  
-            let key = "pass1";
-            let TestDataClass = ncmb.DataStore(db);
-            let testDataClass = new TestDataClass();
-            let value = parseInt($("#level").val());
+                  console.log(results.count);
+                  if(results.count < 1){
+                    let key = "pass1";
+                
+                    let testDataClass = new TestDataClass();
+                    let value = parseInt($("#level").val());
+                    testDataClass.set(key, value)
+                    .save()
+                    .then(function(results) {
+                        $("#display").removeClass();
+                        $("#display").addClass("bg-success");
+                        $("#display").html("enter success");
+                    })
+                    .catch(function(results) {
+                        $("#display").removeClass();
+                        $("#display").addClass("bg-warning");
+                        $("#display").html("enter fail");
+                    })
+                  }
+                })
+
+            
+            
             
 
-            testDataClass.set(key, value)
-                .save()
-                .then(function(results) {
-                    $("#display").removeClass();
-                    $("#display").addClass("bg-success");
-                    $("#display").html("enter success");
-                })
-                .catch(function(results) {
-                    $("#display").removeClass();
-                    $("#display").addClass("bg-warning");
-                    $("#display").html("enter fail");
-                })
+            
 
                 
                 
