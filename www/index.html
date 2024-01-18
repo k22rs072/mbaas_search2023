@@ -78,7 +78,7 @@
         
         }
 
-        function Reset() {
+        function searchName() {
             let name = $("#name").val();
             let TestDataClass = ncmb.DataStore(db);
             TestDataClass.equalTo("name", name).fetchAll()
@@ -148,7 +148,7 @@
 </head>
 
 <body>
-    <h1>mBaaS search</h1>
+    <h1>PASS</h1>
     <div>
         <label for="name">name:</label>
         <input id="name" type="text" placeholder="pass">
@@ -161,7 +161,7 @@
     
     <div id="button">
         <button class="btn" onclick="fetchAll()">Fetch All</button>
-        <button class="btn" onclick="Reset()">Reset</button><br>
+        <button class="btn" onclick="searchName()">Reset</button><br>
         <button class="btn" onclick="dataIN()">dataIN</button>
         <button class="btn" onclick="searchLevelLT()">Level&lt</button>
         <button class="btn" onclick="searchLevelGT()">Level&gt</button>
